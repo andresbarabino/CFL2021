@@ -1,22 +1,34 @@
 let readlineSync = require('readline-sync');
 
 let cantidadAlumnos = readlineSync.questionInt("Ingrese la cantidad de alumnos: ");
+while(cantidadAlumnos <= 0){
+    cantidadAlumnos = readlineSync.questionInt("Ingrese la cantidad de alumnos: ");
+}
 let nota1T = new Array(cantidadAlumnos);
 let nota2T = new Array(cantidadAlumnos);
 let nota3T = new Array(cantidadAlumnos);
 let alumnosIngresados = new Array(cantidadAlumnos);
 let buscarAlumno;
 let resultado = 0;
-while(cantidadAlumnos <= 0){
-    cantidadAlumnos = readlineSync.questionInt("Ingrese la cantidad de alumnos: ");
 
-}
 function cargarAlumnosNotas(alumno, nota1, nota2, nota3, longitud){
     for(let i = 0; i < longitud; i++){
         alumno[i] = readlineSync.question("Ingrese el nombre del alumno "+(i+1)+": ");
         nota1[i] = readlineSync.questionInt("Ingrese la nota del 1er trimestre: ");
+        while(nota1[i] <= 0 || nota1[i] > 10){
+            console.log("El valor ingresado es incorrecto.");
+            nota1[i] = readlineSync.questionInt("Ingrese la nota del 1er trimestre: ");
+        }
         nota2[i] = readlineSync.questionInt("Ingrese la nota del 2do trimestre: ");
+        while(nota2[i] <= 0 || nota2[i] > 10){
+            console.log("El valor ingresado es incorrecto.");
+            nota2[i] = readlineSync.questionInt("Ingrese la nota del 2do trimestre: ");
+        }
         nota3[i] = readlineSync.questionInt("Ingrese la nota del 3er trimestre: ");
+        while(nota3[i] <= 0 || nota3[i] > 10){
+            console.log("El valor ingresado es incorrecto.");
+            nota3[i] = readlineSync.questionInt("Ingrese la nota del 3er trimestre: ");
+        }
     }
 }
 
